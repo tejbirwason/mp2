@@ -1,7 +1,7 @@
 Machine Problem 2: Music Catalogue 2.10
 ===
 
-> This machine problem is due October 15 by 11:00 a.m. and is worth 6% of your course grade. You should work on this assignment with an assigned partner[s].
+> This machine problem is due October 15 by 11:00 a.m. and is worth 6% of your course grade. You should work on this assignment with your assigned partner[s].
 
 ### Background
 
