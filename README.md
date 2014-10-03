@@ -9,7 +9,7 @@ In this machine problem, you will build a system to catalogue music that you - o
 To get started with this machine problem, you should make sure you understand the following:
 + [Using Java packages](http://docs.oracle.com/javase/tutorial/java/package/)
 + [The basics of inheritance and how it is implemented in Java](https://dl.dropboxusercontent.com/u/567187/EECE 210/Java/3-Inheritance-and-Interfaces.pdf)
-+ The distinction between `public`, `private` and `protected` methods in Java
++ [The distinction between `public`, `private` and `protected` methods in Java](http://docs.oracle.com/javase/tutorial/java/javaOO/accesscontrol.html)
 + The value of the `final` keyword in Java
 + [Creating and managing simple trees](https://dl.dropboxusercontent.com/u/567187/EECE 210/Java/BinaryTrees.pdf)
 + [Simple file handling in Java](https://dl.dropboxusercontent.com/u/567187/EECE 210/Java/FileProcessing.pdf)
