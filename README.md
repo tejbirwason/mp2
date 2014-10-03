@@ -63,6 +63,8 @@ The `Catalogue` object is just a container for all the albums and genres. For no
 
 #### Example Catalogue
 
+<img src="https://dl.dropboxusercontent.com/u/567187/EECE%20210/Images/MP3/CatalogueExample.jpg" />
+
 ### Test Cases
 
 You will have to write test cases using JUnit for the following scenarios.
