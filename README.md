@@ -17,7 +17,7 @@ To get started with this machine problem, you should make sure you understand th
 
 You will be working with a music catalogue but no actual music files for this machine problem. For those of you that may have used a music library such as iTunes, the central functionality you are implementing is the ability to export and import a library. The binding between the metadata in the catalogue (album name, etc.) and the actual music files is easy to establish. To perform the export/import operation, you should consider the choice of how you would represent a music catalogue as a `String` because you should be able to import/read the `String` to reconstruct the catalogue. You will find that using a text markup language similar to HTML will be of much help.
 
-This programming assignment is a non-trivial introduction to many key concepts:
+This programming assignment is a **non-trivial introduction** to many key concepts:
 + abstract data types
 + subtypes
 + recursion
