@@ -34,7 +34,7 @@ The music catalogue you are building allows a user to store a list of albums the
 
 Our albums will only contain the following information: the title of the album, the name(s) of the performer(s),  and a list of song titles.
 
-The `Album` class will support four main operations: `addToGenre()`, `removeFromGenre()`, `getStringRepresentation()` and a constructor to create an album from a `String` representation.
+The `Album` class will support four main operations: `addToGenre()`, `removeFromGenre()`, `toString()` and a constructor to create an album from a `String` representation.
 
 An album also contains a reference to the genre that it is part of. An album can be part of only one genre. (New forms of music may not have a well-established genre yet, and in that case the genre reference may point to a genre named Unclassified.) An album can save itself as a String, and this String can then be saved/written to a file. The file format can be of your own choosing.
 
@@ -46,7 +46,7 @@ Genres can save their state into a string representation. This, as is the case w
 
 ```java
 	static Genre restoreGenre(String stringRepresentation);
-	String getStringRepresentation();
+	String toString();
 ```
 
 A `Genre` can have only one parent.
