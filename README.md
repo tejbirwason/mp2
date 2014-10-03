@@ -15,6 +15,15 @@ To get started with this machine problem, you should make sure you understand th
 + [Simple file handling in Java](https://dl.dropboxusercontent.com/u/567187/EECE 210/Java/FileProcessing.pdf)
 + [Basic JUnit Testing](http://www.vogella.com/articles/JUnit/article.html)
 
+You will be working with a music catalogue but no actual music files for this machine problem. For those of you that may have used a music library such as iTunes, the central functionality you are implementing is the ability to export and import a library. The binding between the metadata in the catalogue (album name, etc.) and the actual music files is easy to establish. To perform the export/import operation, you should consider the choice of how you would represent a music catalogue as a `String` because you should be able to import/read the `String` to reconstruct the catalogue. You will find that using a text markup language similar to HTML will be of much help.
+
+This programming assignment is a non-trivial introduction to many key concepts:
++ abstract data types
++ subtypes
++ recursion
++ recursive datatypes
++ text markup
+
 ### The Structure of Music Catalogue 2.10
 
 The music catalogue you are building allows a user to store a list of albums they own. An album has a title, the name(s) of the performer(s) and a list of songs in the album. Each album belongs to a musical genre (or sub-genre). An album can belong to only one music genre (or sub-genre). For a music genre, it should be possible to retrieve all albums that belong to that genre or its sub-genres.
