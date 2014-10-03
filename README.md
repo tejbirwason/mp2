@@ -1,6 +1,7 @@
 Machine Problem 2: Music Catalogue 2.10
 ===
 
+> This machine problem is due October 15 by 11:00 a.m. and is worth 6% of your course grade. You should work on this assignment with an assigned partner[s].
 
 ### Background
 
@@ -92,4 +93,4 @@ You will have to write test cases using JUnit for the following scenarios.
 
 ### Submitting Your Work
 
-You will submit your work by pushing all your code to a BitBucket private repository called `mp2`. Remember to preserve the subdirectory structure so that the package references are preserved.
+You will submit your work by pushing all your code to a BitBucket private repository called `mp2`. Remember to preserve the subdirectory structure so that the package references are preserved. Provide the instructor and your lab section TA with write access to the BitBucket repository. Do not wait until the last minute to share the repository with course staff; you can do this as soon as you have created the repository.
