@@ -92,4 +92,4 @@ You will have to write test cases using JUnit for the following scenarios.
 
 ### Submitting Your Work
 
-You will submit your work by pushing all your code to a BitBucket private repository called `mp3`. Remember to preserve the subdirectory structure so that the package references are preserved.
+You will submit your work by pushing all your code to a BitBucket private repository called `mp2`. Remember to preserve the subdirectory structure so that the package references are preserved.
