@@ -25,6 +25,8 @@ This programming assignment is a **non-trivial introduction** to many key concep
 + recursive datatypes
 + text markup
 
+### To Think About
+
 Some questions you should be thinking about as you undertake this machine problem are:
 + Does the machine problem use subclassing correctly? Why or why not?
 + Does the use of recursion (and recursive structures) improve code readability and reduce the number of lines of code?
