@@ -25,6 +25,12 @@ This programming assignment is a **non-trivial introduction** to many key concep
 + recursive datatypes
 + text markup
 
+Some questions you should be thinking about as you undertake this machine problem are:
++ Does the machine problem use subclassing correctly? Why or why not?
++ Does the use of recursion (and recursive structures) improve code readability and reduce the number of lines of code?
+
+You do not have to explicitly answer the questions above but thinking about them will help you see the material we discuss with more clarity.
+
 ### The Structure of Music Catalogue 2.10
 
 The music catalogue you are building allows a user to store a list of albums they own. An album has a title, the name(s) of the performer(s) and a list of songs in the album. Each album belongs to a musical genre (or sub-genre). An album can belong to only one music genre (or sub-genre). For a music genre, it should be possible to retrieve all albums that belong to that genre or its sub-genres.
