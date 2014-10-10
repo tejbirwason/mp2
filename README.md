@@ -30,6 +30,7 @@ This programming assignment is a **non-trivial introduction** to many key concep
 Some questions you should be thinking about as you undertake this machine problem are:
 + Does the machine problem use subclassing correctly? Why or why not?
 + Does the use of recursion (and recursive structures) improve code readability and reduce the number of lines of code?
++ How effective is testing? Are the tests that you have to implement sufficient to find problems?
 
 You do not have to explicitly answer the questions above but thinking about them will help you see the material we discuss with more clarity.
 
