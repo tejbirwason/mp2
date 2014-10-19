@@ -39,8 +39,8 @@ public final class Album extends Element {
 
 	/**
 	 * Returns the string representation of the given album. The representation
-	 * contains the title, performer and songlist, as well as all the genre
-	 * that the book belongs to.
+	 * contains the title, performer and songlist, as well as the genre name for the genre
+	 * that the album belongs to.
 	 * 
 	 * @return the string representation
 	 */
