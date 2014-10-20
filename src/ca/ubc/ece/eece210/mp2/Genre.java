@@ -9,6 +9,9 @@ import java.util.regex.Pattern;
  * 
  * @author Sathish Gopalakrishnan
  * 
+ * NOTE: Parts of the code has been reference from this repository available online: 
+ * https://github.com/esecules/UBC_EECE/tree/master/EECE_210_L1A7/mp3
+ * 
  */
 public final class Genre extends Element {
 	

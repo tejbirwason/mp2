@@ -195,7 +195,7 @@ public class MusicLibraryTest {
 	
 	
 	//Scenario 9: Write a test to verify the genre inclusion rules
-	//check to make sure you cant add an album already in a genre twice
+	//check to make sure that a genre has only one parent genre
 	@Test
 	public void InclusionRules() {
 		Genre Rock = new Genre( "Rock" );
