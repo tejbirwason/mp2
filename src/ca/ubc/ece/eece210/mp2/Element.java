@@ -1,5 +1,6 @@
 package ca.ubc.ece.eece210.mp2;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -10,7 +11,9 @@ import java.util.List;
  * 
  */
 public abstract class Element {
-
+	String name;
+	private List<Element> childrenElements = new ArrayList<Element>();
+	
 	/**
 	 * Returns all the children of this entity. They can be albums or genres. In
 	 * this particular application, only genres can have children. Therefore,
@@ -19,8 +22,7 @@ public abstract class Element {
 	 * @return the children
 	 */
 	public List<Element> getChildren() {
-		// TODO implement this
-		return null;
+		return childrenElements;
 	}
 
 	/**
@@ -31,10 +33,31 @@ public abstract class Element {
 	 *            the entity to be added.
 	 */
 	protected void addChild(Element b) {
-		// TODO implement this (should throw an exception if trying to add
-		// to a leaf object);
+		if ( this.hasChildren() && !this.childrenElements.contains(b) ) {
+				childrenElements.add(b);
+		} else {
+			throw new IllegalArgumentException("Cannot have children or "
+				+ "already contains this child" );
+		}
 	}
 
+	/**
+	 * Removes a child from this entity. Basically, it is removing 
+	 * an album or genre from an existing genre
+	 * 
+	 * @param b		the child to be removed
+	 */
+	protected void removeChild(Element b) {
+		if ( this.hasChildren() && this.childrenElements.contains(b) ) {
+				childrenElements.remove(b);
+		} else {
+			throw new IllegalArgumentException("Cannot have children or "
+				+ "child does not exist." );
+		}
+	}
+
+	
+	
 	/**
 	 * Abstract method to determine if a given entity can (or cannot) contain
 	 * any children.

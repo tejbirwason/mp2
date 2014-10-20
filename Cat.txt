@@ -1,0 +1,22 @@
+
+<genreName>DUMMY</genreName>[
+<subGenre>
+<genreName>Jazz</genreName>[
+<subGenre>
+<genreName>Blues</genreName>[
+<album><albumtitle>Black Ice</albumtitle><performer>AC / DC</performer><song>Back in Black</song><song>Piano Stuff</song><song>Boulevard of Broken Dreams</song></album>]
+</subGenre>, 
+<subGenre>
+<genreName>Funk</genreName>[
+<album><albumtitle>American Idiot</albumtitle><performer>Green Day</performer><song>Back in Black</song><song>Piano Stuff</song><song>Boulevard of Broken Dreams</song></album>]
+</subGenre>]
+</subGenre>, 
+<subGenre>
+<genreName>Classical</genreName>[
+<album><albumtitle>Chopin Collections</albumtitle><performer>Evgeny Kissin</performer><song>Back in Black</song><song>Piano Stuff</song><song>Boulevard of Broken Dreams</song></album>]
+</subGenre>, 
+<subGenre>
+<genreName>Blues</genreName>[
+<album><albumtitle>Black Ice</albumtitle><performer>AC / DC</performer><song>Back in Black</song><song>Piano Stuff</song><song>Boulevard of Broken Dreams</song></album>]
+</subGenre>]
+<END>
