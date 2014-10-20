@@ -140,12 +140,11 @@ public class MusicLibraryTest {
 	//Scenario 6: Recreate the Genre from the string form
 	@Test
 	public void StringToGenre() {
-		//declaring songlist with a couple songs and a test album with details
 		ArrayList<String> songlist = new ArrayList<String>();
 		songlist.add( "Back in Black" );
 		songlist.add( "Piano Stuff" );
 		songlist.add( "Boulivard of Broken Dreams" );
-		//created album and added it to a specific genre
+		//create album and add it to a specific genre
 		Album testAlbum1 = new Album( "Chopin Collections" , "Evgeny Kissin" , songlist);
 		Album testAlbum2 = new Album( "American Idiot" , "Green Day" , songlist);
 		Album testAlbum3 = new Album( "Black Ice" , "AC / DC" , songlist);
@@ -166,6 +165,7 @@ public class MusicLibraryTest {
 	
 	
 	//Scenario 7: Save the whole catalogue to a file
+	//Scenario 8: Recreate catalogue from file
 	@Test
 	public void SaveToFile () throws IOException {
 		Catalogue TestCatalogue = new Catalogue();		//create new catalogue
@@ -189,21 +189,19 @@ public class MusicLibraryTest {
 		TestCatalogue.addToCat(Jazz);
 		TestCatalogue.addToCat(Classical);
 		TestCatalogue.addToCat(Blues);
-		TestCatalogue.saveCatalogueToFile("Cat.txt");
-		Catalogue TestCatalogue2 = new Catalogue("Cat.txt");
+		
+		TestCatalogue.saveCatalogueToFile("Test.txt");
+		//recreate catalogue from file
+		Catalogue TestCatalogue2 = new Catalogue("Test.txt");
+		
 		assertTrue(TestCatalogue.equals(TestCatalogue2));
 	}
 	
 	
-	//Scenario 8: Recreate catalogue from file (MISSING)
-	@Test
-	public void RecreateFromFile() {
-		assert(true);
-	}
-	
-	
 	//Scenario 9: Write a test to verify the genre inclusion rules
-	//check to make sure that a genre has only one parent genre
+	// check that a genre has only one parent genre,
+	// no recursive hierarchy is allowed,
+	// cannot add a genre to itself
 	@Test
 	public void InclusionRules() {
 		Genre Rock = new Genre( "Rock" );
@@ -241,16 +239,16 @@ public class MusicLibraryTest {
 			addGenreFail = true;
 		}
 		
-		boolean Overflow = false;
+		boolean addSelfGenre = false;
 		try{
 		Rock.addToGenre( Rock );
 		} catch ( IllegalArgumentException e ) {
-			Overflow = true;
+			addSelfGenre = true;
 			System.out.println( e.getMessage() );
 		}
 		
 		assertTrue( addAlbumFail );
-		assertTrue( Overflow );
+		assertTrue( addSelfGenre );
 		assertTrue( addGenreFail );
 		
 		testAlbum3.addToGenre( Classical );
@@ -259,282 +257,8 @@ public class MusicLibraryTest {
 		Rock.addToGenre(Classical);
 //		System.out.println(Classical.toString());
 //		System.out.println(Rock.toString());
+		
 		assertTrue( testAlbum3.getGenre().equals( Classical ) );
 		assertFalse( testAlbum3.getGenre().equals( Rock ) );
 	}
-
-//	/**
-//	 * Tests that Library reader will only read what is between the keys
-//	 */
-//	@Test
-//	public void testA() {
-//		System.out.println("\n TEST A");
-//		String albumExpression = "<genre>Rap "
-//				+ "<album>Music from and Inspired by the Motion Picture 8 Mile "
-//				+ "<performer> Eminem "
-//				+ "</performer>"
-//				+ "<song> Lose Yourself "
-//				+ "</song> "
-//				+ "</album>"
-//				+ "</genre>";
-//		LibraryReader newLibraryReader = new LibraryReader(albumExpression);
-//		String[] albums = newLibraryReader.splitIntoStrings("album");
-//		System.out.println(albums[0]);
-//		assertEquals(albums[0], "Music from and Inspired by the Motion Picture 8 Mile "
-//				+ "<performer> Eminem "
-//				+ "</performer>"
-//				+ "<song> Lose Yourself "
-//				+ "</song> ");
-//		}
-	
-//	/**
-//	 * Tests that the Library Reader will read albums across multiple genres 
-//	 */
-//	@Test
-//	public void testB() {
-//		System.out.println("\n TEST B");
-//		String albumExpression2 = "<genre> Rap "
-//				+ "<album> Eminem </album> "
-//				+ "<album> 50cent </album>"
-//				+ "<album> Justin Bieber </album>"
-//				+ "</genre>"
-//				+ "<genre> Rock"
-//				+ "<album> The Killers </album>"
-//				+ "<album> Kings of Leon </album>"
-//				+ "<album> Red Hot Chili Peppers </album>"
-//				+ "</genre>";
-//		LibraryReader newLibraryReader2 = new LibraryReader(albumExpression2);
-//		String[] albums = newLibraryReader2.splitIntoStrings("album");
-//		for ( int index = 0; index < albums.length; index++ ){
-//			System.out.println(albums[index]);
-//		}
-//		System.out.println(albums[0]);
-//		assertEquals(albums[0], " Eminem ");
-//	}
-	
-//	/**
-//	 * Tests that Library writer will write an array into a single 
-//	 * string  with the correct expected output
-//	 */
-//	@Test
-//	public void testC() {
-//		System.out.println("\n TEST C");
-//		String[] songExpression = {"Roar","Stutter","Use Somebody","Somebody That I Used To Know",
-//				"Ain't No Rest For the Wicked","Diamonds",
-//				"22","Away We Go","Let It Go"};
-//		LibraryWriter newLibraryWriter = new LibraryWriter(songExpression);
-//		String songs = newLibraryWriter.createString("song");
-//		System.out.println(songs);
-//		assertEquals(songs, "<song>Roar</song>"
-//				+ "<song>Stutter</song>"
-//				+ "<song>Use Somebody</song>"
-//				+ "<song>Somebody That I Used To Know"
-//				+ "</song><song>Ain't No Rest For the Wicked"
-//				+ "</song><song>Diamonds"
-//				+ "</song><song>22</song><song>Away We Go"
-//				+ "</song><song>Let It Go</song>");
-//	}
-	
-//	/**
-//	 * Tests that Library reader will return an array of strings that corresponds
-//	 * to the strings in between the given key for the example of an 
-//	 * album with a list of songs
-//	 */
-//	@Test
-//	public void testD() {
-//		System.out.println("\n TEST D");
-//		String songExpression = "<song>Roar</song><song>Stutter</song><song>Use Somebody"
-//				+ "</song><song>Somebody That I Used To Know"
-//				+ "</song><song>Ain't No Rest For the Wicked"
-//				+ "</song><song>Diamonds"
-//				+ "</song><song>22</song><song>Away We Go"
-//				+ "</song><song>Let It Go</song>";
-//		LibraryReader newLibraryReader = new LibraryReader(songExpression);
-//		String[] songs = newLibraryReader.splitIntoStrings("song");
-//		
-//		for ( int index = 0; index < songs.length; index++ ) {
-//		System.out.println(songs[index]);
-//		}
-//		
-//		String[] newSongExpression = {"Roar","Stutter","Use Somebody","Somebody That I Used To Know",
-//				"Ain't No Rest For the Wicked","Diamonds",
-//				"22","Away We Go","Let It Go"};
-//		for ( int index = 0; index < songs.length; index++ ) {
-//			assertEquals(songs[index], newSongExpression[index]);	
-//		}
-//		
-//	}
-//	
-//	/**
-//	 * Tests the constructor from a string of the object Album.
-//	 */
-//	@Test
-//	public void testE() {
-//		System.out.println("\n TEST E");
-//		String newAlbumExpression = "<album>"
-//				+ "<albumtitle>X</albumtitle>"
-//				+ "<performer>Ed Sheeran</performer>"
-//				+ "<song>One</song>"
-//				+ "<song>I'm a Mess</song>"
-//				+ "<song>Sing</song>"
-//				+ "<song>Don't</song>"
-//				+ "<song>Nina</song>"
-//				+ "<song>Photograph</song>"
-//				+ "<song>Bloodstream</song>"
-//				+ "</album>";
-//		Album testAlbum = new Album(newAlbumExpression);
-//		System.out.println(testAlbum.performer);
-//		System.out.println(testAlbum.name);
-//		
-//		assertEquals(testAlbum.performer, "Ed Sheeran");
-//		assertEquals(testAlbum.name, "X");
-//		
-//		for ( String s: testAlbum.songlist ) {
-//			System.out.println( s );
-//		}
-//		
-//				
-//	}
-//
-//	
-//
-//	/**
-//	 * Tests the constructor from parameters of the object Album.
-//	 */
-//	@Test
-//	public void testF() {
-//		System.out.println("\n TEST F");
-//		String title = "X";
-//		String performer = "Ed Sheeran";
-//		ArrayList<String> songs = new ArrayList<String>();
-//		songs.add("One");
-//		songs.add("I'm a Mess");
-//		songs.add("Sing");
-//		songs.add("Don't");
-//		songs.add("Nina");
-//		songs.add("Photograph");
-//		songs.add("Bloodstream");
-//		Album testAlbum = new Album(title, performer, songs);
-//		System.out.println(testAlbum.performer);
-//		System.out.println(testAlbum.name);
-//		
-//		assertEquals(testAlbum.performer, "Ed Sheeran");
-//		assertEquals(testAlbum.name, "X");
-//		
-//		for ( String s: testAlbum.songlist ) {
-//			System.out.println( s );
-//		}
-//				
-//	}
-//
-//	/**
-//	 * Tests the toString method of the object Album.
-//	 */
-//	@Test
-//	public void testG() {
-//		System.out.println("\n TEST G");
-//		String title = "X";
-//		String performer = "Ed Sheeran";
-//		ArrayList<String> songs = new ArrayList<String>();
-//		songs.add("One");
-//		songs.add("I'm a Mess");
-//		songs.add("Sing");
-//		songs.add("Don't");
-//		songs.add("Nina");
-//		songs.add("Photograph");
-//		songs.add("Bloodstream");
-//		
-//		Album testAlbum = new Album(title, performer, songs);
-//		
-//		String testString = testAlbum.toString();
-//		System.out.println( testString );
-//		
-//	}
-
-//	/**
-//	 * Tests that Library reader will only read what is between the keys
-//	 */
-//	@Test
-//	public void testH() {
-//		System.out.println("\n TEST H");
-//		String genreExpression = "<genre>Jazz"
-//				+ "<album>album1</album>"
-//				+ "<album>album2</album>"
-//				+ "<subgenre>Smooth Jazz"
-//				+ "<album>album3</album>"
-//				+ "<album>album4</album>"
-//				+ "</subgenre>"
-//				+ "<subgenre>Classical Jazz"
-//				+ "<album>album5</album>"
-//				+ "<album>album6</album>"
-//				+ "</subgenre></genre>"
-//				;
-//		LibraryReader newLibraryReader = new LibraryReader(genreExpression);
-//		String[] genres = newLibraryReader.splitIntoStrings("genre");
-//		
-//		for (int index = 0; index < genres.length; index++){
-//		System.out.println(genres[index]);
-//		}
-//	}
-//	
-//	/**
-//	 * Tests that Library reader will only read what is between the keys
-//	 */
-//	@Test
-//	public void testI() {
-//		System.out.println("\n TEST I");
-//		String genreExpression = "<genreName>Jazz</genreName>\n"
-//				+ "<album><albumtitle>X</albumtitle><performer>Ed Sheeran</performer><song>One</song><song>I'm a Mess</song><song>Sing</song></album>\n"
-//				+ "<subGenre>\n"
-//				+ "<genreName>Smooth Jazz</genreName>\n"
-//				+ "<album><albumtitle>G</albumtitle><performer>Eddy Sheehan</performer><song>Two</song><song>I'm not a Mess</song><song>Singing</song></album>\n"				
-//				+ "<subGenre>\n"
-//				+ "<genreName>Smooth Jazz</genreName>\n"
-//				+ "<album><albumtitle>H</albumtitle><performer>Edward Sheenanigans</performer><song>Three</song><song>I'm not a total Mess</song><song>Singingers</song></album>\n"
-//				+ "</subGenre>\n"
-//				+ "</subGenre>\n"
-//				+ "<END>";
-//		System.out.println(genreExpression);
-//		/*
-//		LibraryReader newLibraryReader = new LibraryReader(genreExpression);
-//		String[] genres = newLibraryReader.splitIntoStrings("genre");
-//		*/
-//		Genre jazzGenre = new Genre("Jazz");
-//		jazzGenre.restoreCollection(genreExpression);
-//		
-//		assertEquals(jazzGenre.name, "Jazz");
-//		//assertEquals(jazzGenre.getAllChildren(), "Jazz");
-//		//assertEquals(jazzGenre.name, "Jazz");
-//		
-//		/*
-//		for (int index = 0; index < genres.length; index++){
-//		System.out.println(genres[index]);
-//		}
-//		*/
-//	}
-//
-//	/**
-//	 * Tests that Library reader will only read what is between the keys
-//	 */
-//	@Test
-//	public void testJ() {
-//		System.out.println("\n TEST J");
-//		//declaring songlist with a couple songs and a test album with details
-//		ArrayList<String> songlist = new ArrayList<String>();
-//		songlist.add( "Back in Black" );
-//		songlist.add( "Piano Stuff" );
-//		songlist.add( "Boulivard of Broken Dreams" );
-//		//created album and added it to a specific genre
-//		Album testAlbum1 = new Album( "Chopin Collections" , "Evgeny Kissin" , songlist);
-//		Album testAlbum2 = new Album( "American Idiot" , "Green Day" , songlist);
-//		Genre Classical = new Genre( "Classical" );
-//		Genre Master = new Genre( "Master" );
-//		testAlbum1.addToGenre( Classical );
-//		testAlbum2.addToGenre( Classical );
-//		Master.addToGenre(Classical);
-//		String Test = new String();
-//		System.out.println(Master.toString());
-//		//Test = ("\n<!!genre name!!>Master<!!end genre name!!>[\n<!!sub genre!!>\n<!!genre name!!>Classical<!!end genre name!!>[\n<!!album!!><!!album name!!>Chopin Collections<!!end album name!!><!!performer!!>Evgeny Kissin<!!end performer!!><!!songlist!!>[<!!song!!>Back in Black<!!end song!!><!!SongSplitPoint!!>, <!!song!!>Piano Stuff<!!end song!!><!!SongSplitPoint!!>, <!!song!!>Boulivard of Broken Dreams<!!end song!!><!!SongSplitPoint!!>]<!!end songlist!!><!!end album!!>, \n<!!album!!><!!album name!!>American Idiot<!!end album name!!><!!performer!!>Green Day<!!end performer!!><!!songlist!!>[<!!song!!>Back in Black<!!end song!!><!!SongSplitPoint!!>, <!!song!!>Piano Stuff<!!end song!!><!!SongSplitPoint!!>, <!!song!!>Boulivard of Broken Dreams<!!end song!!><!!SongSplitPoint!!>]<!!end songlist!!><!!end album!!>]\n<!!end sub genre!!>]\n<!!END!!>");
-//		//assertEquals("String does not match Test string" , Master.toString(), Test);
-//	}
 }
